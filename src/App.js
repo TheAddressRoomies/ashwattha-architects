@@ -4,20 +4,8 @@ import { useEffect, useState } from 'react';
 import { database } from './config/firebaseConfig';
 import { ref, get } from 'firebase/database';
 
-interface Project {
-  id: number,
-  name: string,
-  description: string,
-  location: string
-  completionDate: string,
-  type: string,
-  photoUrls: Array<string>,
-  videoUrls: Array<string>
-
-}
-
 const App = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -26,13 +14,8 @@ const App = () => {
         const snapshot = await get(projectsRef);
 
         if (snapshot.exists()) {
-          const data = snapshot.val();
-          const projectsList: Project[] = Object.keys(data).map((key, index) => ({
-            id: index,
-            ...data[key]
-          }));
+          const projectsList = snapshot.val();
           setProjects(projectsList);
-          console.log(projectsList)
         } else {
           console.log('No data available');
         }
@@ -49,7 +32,7 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload.
         </p>
         <ul>
         {projects.map(project => (
