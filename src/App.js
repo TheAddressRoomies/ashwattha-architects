@@ -1,59 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect, useState } from 'react';
-import { database } from './config/firebaseConfig';
-import { ref, get } from 'firebase/database';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/layout_components/Navbar';
+import Footer from './components/layout_components/Footer';
+import HomePage from './components/pages_components/Homepage.js';
+import ProjectsPage from './components/pages_components/ProjectsPage.js';
+import ProjectDetails from './components/pages_components/ProjectDetails.js';
+import AboutUsPage from './components/pages_components/AboutUs.js';
+import AdminLoginPage from './components/pages_components/AdminLogin.js';
+import AdminDashboardPage from './components/pages_components/AdminDashboard.js';
 
-const App = () => {
-  const [projects, setProjects] = useState([]);
+const App = () => (
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const projectsRef = ref(database, 'projects');
-        const snapshot = await get(projectsRef);
-
-        if (snapshot.exists()) {
-          const projectsList = snapshot.val();
-          setProjects(projectsList);
-        } else {
-          console.log('No data available');
-        }
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <ul>
-        {projects.map(project => (
-          <li key={project.id}>
-            <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <p>{project.location}</p>
-          </li>
-        ))}
-      </ul>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <Router>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+      </Routes>
+      <Footer />
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
