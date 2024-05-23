@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/logo.png';
 import './NavBar.css';
 import { useNavigate,Link } from "react-router-dom";
+import { Image } from 'react-bootstrap';
 
 
 const NavBar = () => {
@@ -32,7 +33,7 @@ const NavBar = () => {
         <Container>
   
           <Navbar.Brand href="#home">
-              <img src={logo} className="logo"/>
+              <Image src={logo} className="logo" onClick={handleHomeClick}/>
           </Navbar.Brand>
   
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
