@@ -1,14 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import logo from '../../assets/logo.png';
+import './NavBar.css';
+import { useNavigate,Link } from "react-router-dom";
 
-const Navbar = () => (
-  <nav>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/projects">Projects</Link></li>
-      <li><Link to="/about">About Us</Link></li>
-    </ul>
-  </nav>
-);
 
-export default Navbar;
+const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleProjectsClick = () => {
+    navigate('/projects');
+  }
+
+  const handleAboutUsClick = () => {
+    navigate('/about');
+  }
+
+  const handleHomeClick = () => {
+    navigate('');
+  }
+
+  const handlContactUsClick = () => {
+    navigate('');
+  }
+
+  return (
+    <Navbar collapseOnSelect expand="lg" style={{backgroundColor:'transparent', zIndex: 99, boxShadow: 'none'}}>
+  
+        <Container>
+  
+          <Navbar.Brand href="#home">
+              <img src={logo} className="logo"/>
+          </Navbar.Brand>
+  
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+  
+          <Navbar.Collapse id="responsive-navbar-nav"  className='justify-content-end' style={{zIndex: 99}}>
+            <Nav>
+              <Nav.Link href="#Home" className='nav-link' onClick={handleHomeClick}>
+                  Home
+              </Nav.Link>
+              <Nav.Link eventKey={2} className='nav-link' onClick={handleProjectsClick}>
+                  Projects
+              </Nav.Link>
+              <Nav.Link eventKey={3} href="#ContactUs" className='nav-link' onClick={handlContactUsClick}>
+                  Contact Us
+              </Nav.Link>
+              <Nav.Link eventKey={4} className='nav-link' onClick={handleAboutUsClick}>
+                  About Us
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+  );
+}
+
+export default NavBar;
