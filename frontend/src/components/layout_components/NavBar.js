@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/logo.png';
 import './NavBar.css';
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -31,11 +31,11 @@ const NavBar = () => {
   
         <Container>
   
-          <Navbar.Brand href="#home">
-              <img src={logo} className="logo"/>
+          <Navbar.Brand href="#home" className='navbar-brand'>
+              <img src={logo} className="logo" onClick={handleHomeClick}/>
           </Navbar.Brand>
   
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" className='navbar-toggle'/>
   
           <Navbar.Collapse id="responsive-navbar-nav"  className='justify-content-end' style={{zIndex: 99}}>
             <Nav>

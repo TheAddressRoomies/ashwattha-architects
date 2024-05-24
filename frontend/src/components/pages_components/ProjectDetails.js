@@ -74,7 +74,7 @@ const ProjectDetails = () => {
   return (
     <div className='project-details'>
     <Container>
-      
+
       <header className="project-header">
         <div className="header-content">
           <h1>{projectData.title}</h1>
@@ -175,7 +175,7 @@ const ProjectDetails = () => {
         </div>
       </section>
 
-      
+
     </Container>
     </div>
   );

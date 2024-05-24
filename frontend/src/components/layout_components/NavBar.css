@@ -1,6 +1,18 @@
 .logo{
-    height: 45px;
+    max-height: 45px;
+    max-width: 50vw;
+    object-fit: contain;
 }
+
+.navbar-toggle{
+    border: 0 !important;
+}
+
+.navbar-toggle:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
 
 .nav-link{
     margin-left: 24px !important;
@@ -9,4 +21,10 @@
 
 .nav-link:hover{
     color: white;
+}
+
+.navbar-brand{
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
