@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2a7890d-102a-4bf5-8705-046c29d78f97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+    <list default="true" id="e2a7890d-102a-4bf5-8705-046c29d78f97" name="Changes" comment="removed build folder">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/controller/ProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/entity/Project.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/entity/ProjectImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/exception/ProjectNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/model/ProjectModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/repository/ProjectImagesRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/repository/ProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/service/ProjectsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/service/impl/ProjectsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/util/BaseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studioashwattha/app/controller/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/studioashwattha/app/StudioashwatthaBackendApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -33,9 +50,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2grhRQMZd3GNbPKLQ7WmrCIobzu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,7 +62,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/project-details-page",
+    "git-widget-placeholder": "backend",
     "last_opened_file_path": "/Users/saurabh/Documents/GitHub/ashwattha-architects/backend"
   }
 }]]></component>
@@ -70,5 +87,33 @@
       <updated>1716461596228</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="backend" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="backend backup" />
+    <MESSAGE value="removed build folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed build folder" />
   </component>
 </project>
