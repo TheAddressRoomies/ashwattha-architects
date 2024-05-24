@@ -1,0 +1,253 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.project-details {
+    width: 100%;
+    background-color: #f8f8f8;
+    padding-bottom: 60px; 
+    margin-bottom: 120px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.project-header {
+    position:inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* margin-bottom: 20px; */
+    /* background-color: red; */
+    /* background-image: url('../../assets/background3.png'); */
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+
+.project-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../../assets/background3.png');
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    animation: slideIn 1s ease-in-out;
+}
+
+.header-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.description {
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.project-facts {
+    margin: 20px 0;
+}
+
+.project-facts h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fact-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.fact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.fact-card svg {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.fact-card strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fact-card p {
+    margin: 0;
+    color: gray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.gallery-section {
+    margin-top: 20px;
+}
+
+.gallery-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.gallery-image-container {
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: absolute;
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-inner-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.modal-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.modal-navigation button {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    pointer-events: all;
+}
+
+.modal-navigation button:hover {
+    opacity: 1;
+}
+
+.modal-navigation button:focus {
+    outline: none;
+}
+
+.walkthrough-section {
+    margin-top: 40px;
+}
+
+.walkthrough-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
