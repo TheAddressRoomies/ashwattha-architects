@@ -15,6 +15,7 @@ const AutoIncrementLayout = () => (
                     delay={1}
                     suffix='+'
                     useIndianSeparators={true}
+                    enableScrollSpy={true}
                     scrollSpyOnce={true}
                     className="auto-increment-number"
                 />
@@ -29,6 +30,7 @@ const AutoIncrementLayout = () => (
                     duration={3}
                     delay={1}
                     useIndianSeparators={true}
+                    enableScrollSpy={true}
                     scrollSpyOnce={true}
                     className="auto-increment-number"
                 />
@@ -43,6 +45,7 @@ const AutoIncrementLayout = () => (
                     duration={3}
                     delay={1}
                     useIndianSeparators={true}
+                    enableScrollSpy={true}
                     scrollSpyOnce={true}
                     className="auto-increment-number"
                 />
@@ -57,6 +60,7 @@ const AutoIncrementLayout = () => (
                     duration={3}
                     delay={1}
                     useIndianSeparators={true}
+                    enableScrollSpy={true}
                     scrollSpyOnce={true}
                     className="auto-increment-number"
                 />
