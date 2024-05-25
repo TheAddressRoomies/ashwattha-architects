@@ -10,7 +10,7 @@ const ProjectList = () => (
   <ul>
     {projects.map(project => (
       <li key={project.id}>
-        <Link to={`/projects/${project.id}`}>{project.name}</Link>
+        <Link to={`/projects/${project.id}/view`}>{project.name}</Link>
       </li>
     ))}
   </ul>
