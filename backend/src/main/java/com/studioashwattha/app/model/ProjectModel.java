@@ -12,6 +12,7 @@ public class ProjectModel {
     private Long id;
     private String title;
     private String location;
+    private String category;
     private String description;
     private String type;
     private String team;

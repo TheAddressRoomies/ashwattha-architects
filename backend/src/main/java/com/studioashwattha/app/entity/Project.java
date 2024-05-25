@@ -21,6 +21,7 @@ public class Project {
     private String location;
     private String description;
     private String type;
+    private String category;
     private String team;
     private LocalDate completionDate;
     private String area;

@@ -45,28 +45,20 @@ public class ProjectsServiceImpl implements ProjectsService {
         return projectRepository.findById(id).orElseThrow(()-> new ProjectNotFoundException("Project with ID "+id+" not found"));
     }
 
-    public List<ProjectImages> findProjectImages(Long projectId) {
-        logger.info("Fetching images for project ID: {}", projectId);
-        return projectImageRepository.findByProjectId(projectId);
-    }
+//    public List<ProjectImages> findProjectImages(Long projectId) {
+//        logger.info("Fetching images for project ID: {}", projectId);
+//        return projectImageRepository.findByProjectId(projectId);
+//    }
 
     public Project saveProject(ProjectModel projectModel, List<MultipartFile> images) throws IOException {
-//        projectModel = new ProjectModel();
-//        projectModel.setId(1L);
-//        projectModel.setTeam("aa");
-//        projectModel.setArea("10sq.ft");
-//        projectModel.setDescription("asa");
-//        projectModel.setLocation("as");
-//        projectModel.setType("as");
-//        projectModel.setTitle("as");
-//        projectModel.setCompletionDate(LocalDate.parse("2022-04-11"));
-//        projectModel.setVideoUrl("asa");
         logger.info("Saving project: {}", projectModel.getTitle());
         Project project = Project.builder()
                 .area(projectModel.getArea())
                 .team(projectModel.getTeam())
                 .title(projectModel.getTitle())
+                .category(projectModel.getCategory())
                 .description(projectModel.getDescription())
+                .completionDate(projectModel.getCompletionDate())
                 .location(projectModel.getLocation())
                 .type(projectModel.getType())
                 .videoUrl(projectModel.getVideoUrl())
@@ -90,7 +82,7 @@ public class ProjectsServiceImpl implements ProjectsService {
     }
 
     private String saveImage(MultipartFile image) throws IOException {
-        Path source = Paths.get(this.getClass().getResource("/").getPath());
+        Path source = Paths.get(System.getProperty("user.dir")+"/src/main/resources");
         Path newFolder = Paths.get(source.toAbsolutePath() + "/static/");
         Files.createDirectories(newFolder);
 
