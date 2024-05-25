@@ -31,9 +31,6 @@ sudo apt-get install -y openjdk-17-jdk
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Install create-react-app globally
-sudo npm install -g create-react-app
-
 # Install MySQL
 sudo apt-get install -y mysql-server
 
@@ -69,7 +66,7 @@ systemctl daemon-reload
 systemctl start ashtwattha-react-app
 systemctl enable ashtwattha-react-app
 systemctl start ashtwattha-springboot-app
-systemctl enable ashtwattha-sprinboot-app
+systemctl enable ashtwattha-springboot-app
 
 echo "Copying mysql backup cronjob"
 cp -f backup_mysql.sh /etc/cron.d/backup_mysql.sh
