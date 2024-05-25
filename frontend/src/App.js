@@ -7,11 +7,12 @@ import ProjectDetails from './components/pages_components/ProjectDetails.js';
 import AboutUsPage from './components/pages_components/AboutUs.js';
 import AdminLoginPage from './components/pages_components/AdminLogin.js';
 import AdminDashboardPage from './components/pages_components/AdminDashboard.js';
+import './App.css';
 
 const App = () => (
 
   <Router>
-    <div>
+    <div className='app'>
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
