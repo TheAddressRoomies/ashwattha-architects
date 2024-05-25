@@ -1,0 +1,16 @@
+[Unit]
+Description=Ashwattha Architects Spring Boot Application
+After=network.target
+
+[Service]
+WorkingDirectory=/path/to/your/spring/boot/app
+ExecStart=/usr/bin/java -jar your-app.jar
+Restart=always
+Environment="SPRING_PROFILES_ACTIVE=production"
+Environment="JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64"
+EnvironmentFile=/etc/developers/ashwattha.env
+
+[Install]
+RequiredBy=ashwattha-react-app.service
+WantedBy=multi-user.target
+

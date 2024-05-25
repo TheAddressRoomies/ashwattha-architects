@@ -1,0 +1,13 @@
+[Unit]
+Description=Ashwattha Architects React Application
+After=network.target
+Requires=ashwattha-springboot-app.service
+
+[Service]
+WorkingDirectory=/path/to/your/react/app
+ExecStart=/usr/bin/npm start
+Restart=always
+Environment="NODE_ENV=production"
+
+[Install]
+WantedBy=multi-user.target
