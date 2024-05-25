@@ -4,7 +4,7 @@ import './Footer.css';
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => (
-  <footer className="page-footer font-small unique-color-dark py-4 mt-3" style={{ zIndex: -1 }}>
+  <footer className="page-footer font-small unique-color-dark py-4 mt-3" style={{ zIndex:100}}>
       <div className="container">
         <Row className="justify-content-lg-center">
           <Col md={12} lg={5} className="d-flex justify-content-lg-start justify-content-center mb-lg-0 mb-2">

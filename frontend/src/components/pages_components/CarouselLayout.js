@@ -7,7 +7,7 @@ import backgroundImage2 from '../../assets/background2.jpg';
 import backgroundImage3 from '../../assets/background3.png';
 
 const CarouselLayout = () => (
-    <Carousel>
+    <Carousel className='carousel'>
       <Carousel.Item className="img-wrapper">
         <Image src={backgroundImage} className="img hover-zoom"/>
         <Carousel.Caption>
