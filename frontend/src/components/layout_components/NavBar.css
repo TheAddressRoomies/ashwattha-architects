@@ -17,6 +17,7 @@
 .nav-link{
     margin-left: 24px !important;
     letter-spacing: 0.15rem;
+    font-weight: bold;
 }
 
 .nav-link:hover{
