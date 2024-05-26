@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import './Footer.css';
-import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaRegEnvelope, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => (
   <footer className="page-footer font-small unique-color-dark py-4 mt-3" style={{ zIndex:100}}>
@@ -16,13 +16,13 @@ const Footer = () => (
           <Col md={12} lg={5} className="d-flex justify-content-lg-end justify-content-center align-items-center">
             <ul className="list-unstyled d-flex mb-0" style={{ fontSize: '17px' }}>
               <li>
-                <a className="footer-icons-container" href="#!" role="button"><FaFacebookF className="footer-icons"/></a>
+                <a className="footer-icons-container" href="https://www.facebook.com/profile.php?id=100067924069593&mibextid=LQQJ4d" role="button"><FaFacebookF className="footer-icons"/></a>
               </li>
               <li>
-                <a className="footer-icons-container" href="#!" role="button"><FaLinkedinIn className="footer-icons"/></a>
+                <a className="footer-icons-container" href="https://www.instagram.com/ashwatthaarchitects?igsh=MXY4NnF1eGl2YWY2MQ%3D%3D&utm_source=qr" role="button"><FaInstagram className="footer-icons"/></a>
               </li>
               <li>
-                <a className="footer-icons-container" href="#!" role="button"><FaInstagram className="footer-icons"/></a>
+                <a className="footer-icons-container" href="mailto:ashwatthaarchitects@gmail.com" role="button"><FaRegEnvelope className="footer-icons"/></a>
               </li>
             </ul>
           </Col>
