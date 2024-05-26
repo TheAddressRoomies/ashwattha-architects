@@ -45,7 +45,7 @@ const NavBar = () => {
               <Nav.Link eventKey={2} className='nav-link' onClick={handleProjectsClick}>
                   Projects
               </Nav.Link>
-              <Nav.Link eventKey={3} href="#ContactUs" className='nav-link' onClick={handlContactUsClick}>
+              <Nav.Link eventKey={3} href="#contact-section" className='nav-link' onClick={handlContactUsClick}>
                   Contact Us
               </Nav.Link>
               <Nav.Link eventKey={4} className='nav-link' onClick={handleAboutUsClick}>
