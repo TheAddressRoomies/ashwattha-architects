@@ -1,0 +1,102 @@
+
+.filters {
+    background-color: #f7fafc;
+    padding: 16px;
+    text-align: center;
+}
+
+.filters button {
+    margin: 4px;
+    padding: 8px 16px;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filters button:hover {
+    background-color: #3182ce;
+}
+
+.filters .inactive {
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+.filters .inactive:hover {
+    background-color: #cbd5e0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    flex: 1;
+}
+
+.projectcard {
+    position: relative;
+    background-color: white;
+    /* border-radius: 8px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    cursor: pointer; 
+}
+
+.projectcard-img:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.projectcard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projectcard h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.2); 
+    color: white; 
+    z-index: 1;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+.pagination span {
+    margin: 0 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.pagination span:hover {
+    background-color: #edf2f7;
+    border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+    .pagination span:first-child {
+        margin-right: auto;
+    }
+    .pagination span:last-child {
+        margin-left: auto;
+    }
+}

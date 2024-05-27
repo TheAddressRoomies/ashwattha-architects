@@ -61,14 +61,6 @@
     }
   }
 
-  /* .image-gradient-container{
-    height: 100%;
-    width: 100%;
-    background-image: url('../../assets/background.avif');
-    background-size: cover;
-    background-repeat: no-repeat;
-  } */
-
   .image-gradient-container::after{ 
       content: '';
       position: absolute;

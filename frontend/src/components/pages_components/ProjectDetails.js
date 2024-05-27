@@ -20,7 +20,7 @@ const ProjectDetails = () => {
     // Fetch project data from API
     const fetchProjectData = async () => {
       try {
-        // const response = await fetch('https://api.example.com/project-details');
+        // const response = await fetch('http://localhost:8080/projects/1');
         // const data = await response.json();
         const data = {
           title: 'Rajwada House',

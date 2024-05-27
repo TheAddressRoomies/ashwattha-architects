@@ -37,12 +37,9 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* margin-bottom: 20px; */
-    /* background-color: red; */
-    /* background-image: url('../../assets/background3.png'); */
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    height: 45vh;
     color: white;
     animation: fadeIn 1.5s ease-in-out;
 }
@@ -55,12 +52,14 @@ p {
     right: 0;
     bottom: 0;
     left: 0;
+    height: 45vh;
     background-image: url('../../assets/background3.png');
     animation: fadeIn 1.5s ease-in-out;
 }
 
 .header-content {
     position: relative;
+    top: -100px;
     z-index: 1;
     animation: slideIn 1s ease-in-out;
 }
