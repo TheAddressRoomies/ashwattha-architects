@@ -1,4 +1,8 @@
 
+#services-section{
+  margin-top: 100px;
+}
+
 .section-heading{
     letter-spacing: 0.5px;
     font-size: 22px;
@@ -37,7 +41,7 @@
   }
   
  .card .card-body p{
-    width: 100% !important;
+    /* width: 100% !important; */
     text-overflow: ellipsis !important;
     height: 14*1.5*4 !important;
     font-size: 14px !important;
@@ -47,10 +51,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4 !important;
-  }
-
-  .card{
-    width: 300px;
   }
 
   .services-icon{

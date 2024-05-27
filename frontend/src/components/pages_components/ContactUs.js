@@ -37,8 +37,8 @@ const ContactUs = () => {
             <p className="text-black" style={{textAlign:'left'}} >
             First Floor, Fulsundar Market, near Lala Urban Bank, Mahtre Wadi, Narayangaon, Maharashtra 410504
             </p>
-            <p style={{ fontSize: '15px', fontWeight: 400, letterSpacing: '0.5px',textAlign:'left', color: '#4F4F4F'}}><span className="font-weight-bold mr-2">Email:</span>ashwatthaarchitects@gmail.com</p>
-            <p style={{ fontSize: '15px', fontWeight: 400, letterSpacing: '0.5px',textAlign:'left', color: '#4F4F4F' }}><span className="font-weight-bold mr-2">Phone:</span>+91 9975455424</p>
+            <p style={{ fontSize: '15px', fontWeight: 400, letterSpacing: '0.5px',textAlign:'left', color: '#4F4F4F', lineBreak:'anywhere'}}><span className="font-weight-bold mr-2">Email:</span>ashwatthaarchitects@gmail.com</p>
+            <p style={{ fontSize: '15px', fontWeight: 400, letterSpacing: '0.5px',textAlign:'left', color: '#4F4F4F'}}><span className="font-weight-bold mr-2">Phone:</span>+91 9975455424</p>
           </Col>
           <Col lg={7} md={12} className="mb-2 mb-md-0 mt-lg-5 mt-0">
             <Form onSubmit={handleSubmit}>

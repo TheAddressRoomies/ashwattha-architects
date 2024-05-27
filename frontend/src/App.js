@@ -13,6 +13,7 @@ const App = () => (
 
   <Router>
     <div className='app'>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
