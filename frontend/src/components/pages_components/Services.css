@@ -41,7 +41,6 @@
   }
   
  .card .card-body p{
-    /* width: 100% !important; */
     text-overflow: ellipsis !important;
     height: 14*1.5*4 !important;
     font-size: 14px !important;
