@@ -19,6 +19,10 @@ const NavBar = () => {
     navigate('/about');
   }
 
+  const handleServicesClick = () => {
+    navigate('/services');
+  }
+
   const handleHomeClick = () => {
     navigate('');
   }
@@ -50,6 +54,11 @@ const NavBar = () => {
             <Nav.Item className='nav-item'>
               <Nav.Link eventKey={2} className='nav-link' onClick={handleProjectsClick}>
                   Projects
+              </Nav.Link> 
+            </Nav.Item>
+            <Nav.Item className='nav-item'>
+              <Nav.Link eventKey={2} className='nav-link' onClick={handleServicesClick}>
+                  Services
               </Nav.Link> 
             </Nav.Item>
             <Nav.Item className='nav-item'>

@@ -8,6 +8,7 @@ import AboutUsPage from './components/pages_components/AboutUs.js';
 import AdminLoginPage from './components/pages_components/AdminLogin.js';
 import AdminDashboardPage from './components/pages_components/AdminDashboard.js';
 import './App.css';
+import ServicesPage from './components/pages_components/services_page/ServicesPage.js';
 
 const App = () => (
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:id/view" element={<ProjectDetails />} />
         <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
         <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
       </Routes>
