@@ -26,9 +26,10 @@ public class ProjectController {
     @Autowired
     private ProjectsService projectService;
 
-    @GetMapping("/all")
-    public ResponseEntity<BaseResponse> findAllProjects() {
-        List<Project> projects = projectService.findAllProjects();
+    @GetMapping
+    public ResponseEntity<BaseResponse> findProjects(@RequestParam(value = "category",required = false) String category) {
+        List<Project> projects =  projectService.findProjects(category);
+
         BaseResponse response = BaseResponse.of(
                 ResponseCode.SUCCESS,
                 projects,
@@ -85,6 +86,15 @@ public class ProjectController {
                 ResponseCode.SUCCESS,
                 savedProject,
                 null
+        );
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<BaseResponse> deleteProject(@PathVariable long id) {
+        projectService.deleteProjectById(id);
+        BaseResponse response = BaseResponse.of(
+            ResponseCode.SUCCESS
         );
         return ResponseEntity.ok(response);
     }

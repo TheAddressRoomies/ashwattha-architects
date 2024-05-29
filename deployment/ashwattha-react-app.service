@@ -4,7 +4,7 @@ After=network.target
 Requires=ashwattha-springboot-app.service
 
 [Service]
-WorkingDirectory=/path/to/your/react/app
+WorkingDirectory=/root/ashwattha-architects/frontend
 ExecStart=/usr/bin/npm start
 Restart=always
 Environment="NODE_ENV=production"
