@@ -6,7 +6,6 @@ import com.studioashwattha.app.model.ProjectModel;
 import com.studioashwattha.app.service.ProjectsService;
 import com.studioashwattha.app.util.BaseResponse;
 import com.studioashwattha.app.util.ResponseCode;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +26,10 @@ public class ProjectController {
     @Autowired
     private ProjectsService projectService;
 
-    @GetMapping("/all")
-    public ResponseEntity<BaseResponse> findAllProjects() {
-        List<Project> projects = projectService.findAllProjects();
+    @GetMapping
+    public ResponseEntity<BaseResponse> findProjects(@RequestParam(value = "category",required = false) String category) {
+        List<Project> projects =  projectService.findProjects(category);
+
         BaseResponse response = BaseResponse.of(
                 ResponseCode.SUCCESS,
                 projects,

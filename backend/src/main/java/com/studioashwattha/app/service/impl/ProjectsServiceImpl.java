@@ -34,8 +34,11 @@ public class ProjectsServiceImpl implements ProjectsService {
     @Autowired
     private ProjectImagesRepository projectImageRepository;
 
-    public List<Project> findAllProjects() {
-        logger.info("Fetching all projects");
+    public List<Project> findProjects(String category) {
+        logger.info("Fetching projects by category");
+        if(category != null) {
+            return projectRepository.findAllByCategory(category);
+        }
         return projectRepository.findAll();
     }
 
