@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +41,11 @@ public class ProjectsServiceImpl implements ProjectsService {
 
     public Project findProjectById(Long id) {
         logger.info("Fetching project with ID: {}", id);
-        return projectRepository.findById(id).orElseThrow(()-> new ProjectNotFoundException("Project with ID "+id+" not found"));
+        Optional<Project> project = projectRepository.findById(id);
+        if(project.isEmpty()) {
+            throw new ProjectNotFoundException("Project with ID "+id+" not found");
+        }
+        return project.get();
     }
 
 //    public List<ProjectImages> findProjectImages(Long projectId) {
@@ -91,5 +94,12 @@ public class ProjectsServiceImpl implements ProjectsService {
         image.transferTo(file);
         logger.info("Saved image to: {}", imagePath);
         return imagePath;
+    }
+
+    public void deleteProjectById(Long id){
+        //this function will throw exception if project is not present in DB
+        findProjectById(id);
+
+        projectRepository.deleteById(id);
     }
 }

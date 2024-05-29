@@ -6,6 +6,7 @@ import com.studioashwattha.app.model.ProjectModel;
 import com.studioashwattha.app.service.ProjectsService;
 import com.studioashwattha.app.util.BaseResponse;
 import com.studioashwattha.app.util.ResponseCode;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -85,6 +86,15 @@ public class ProjectController {
                 ResponseCode.SUCCESS,
                 savedProject,
                 null
+        );
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<BaseResponse> deleteProject(@PathVariable long id) {
+        projectService.deleteProjectById(id);
+        BaseResponse response = BaseResponse.of(
+            ResponseCode.SUCCESS
         );
         return ResponseEntity.ok(response);
     }

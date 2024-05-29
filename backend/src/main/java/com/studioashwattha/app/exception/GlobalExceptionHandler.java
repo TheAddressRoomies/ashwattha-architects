@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ProjectNotFoundException.class)
     public ResponseEntity<BaseResponse> handleProjectNotFoundException(ProjectNotFoundException ex) {
         BaseResponse response = BaseResponse.of(
-                ResponseCode.PROJECT_DETAILS_FOUND,
+                ResponseCode.PROJECT_DETAILS_NOT_FOUND,
                 null,
                 ex.getMessage()
         );

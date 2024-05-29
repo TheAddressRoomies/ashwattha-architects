@@ -15,4 +15,5 @@ public interface ProjectsService {
     public Project findProjectById(Long id);
 //    public List<ProjectImages> findProjectImages(Long projectId);
     public Project saveProject(ProjectModel project, List<MultipartFile> images) throws IOException;
+    void deleteProjectById(Long id);
 }
