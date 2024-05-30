@@ -26,7 +26,7 @@ const ProjectList = () => {
 
   useEffect(() => {
     // Replace with your actual API URL
-    const apiURL = "http://localhost:8080/projects/all";
+    const apiURL = "http://localhost:8080/projects";
 
     const fetchProjects = async () => {
       try {
@@ -34,7 +34,7 @@ const ProjectList = () => {
         const result = await response.json();
 
         if (result.responseCode === 200) {
-          setProjects(result.data);
+          setProjects(result.data.data.map);
         } else {
           setError("Failed to fetch data");
         }
