@@ -17,10 +17,10 @@ class AuthApi {
         return this.context.session;
       }
   
-    login() {
+    login(username,password) {
         return axios.post("http://localhost:8080/admin/login", {
-            username: 'admin',
-            password: 'admin@123'
+            username: username,
+            password: password
         })
         .then((response) => {
             console.log(response);

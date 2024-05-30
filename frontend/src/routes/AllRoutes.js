@@ -11,6 +11,7 @@ import NotFoundPage  from '../components/common_components/NotFoundPage.js';
 import AdminLoginPage from '../components/pages_components/AdminLogin.js';
 import AdminDashboardPage from '../components/pages_components/AdminDashboard.js';
 import Services from '../components/pages_components/Services.js';
+import './AllRoutes.css';
 
 const AllRoutes = () => (
     <Router>
