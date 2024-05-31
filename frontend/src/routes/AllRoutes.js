@@ -1,16 +1,15 @@
 
 import { PublicRoute } from '../routes/PublicRoute.js';
 import { ProtectedRoute } from '../routes//ProtectedRoute.js';
-import { Route,BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route,BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
 import { MainLayout } from '../components/layout_components/MainLayout.js';
 import HomePage  from '../components/pages_components/Homepage.js';
 import ProjectsPage  from '../components/pages_components/ProjectsPage.js';
 import ProjectDetails  from '../components/pages_components/ProjectDetails.js';
 import AboutUsPage  from '../components/pages_components/AboutUs.js';
-import NotFoundPage  from '../components/common_components/NotFoundPage.js';
 import AdminLoginPage from '../components/pages_components/AdminLogin.js';
 import AdminDashboardPage from '../components/pages_components/AdminDashboard.js';
-import Services from '../components/pages_components/Services.js';
+import ServicesPage from '../components/pages_components/services_page/ServicesPage.js';
 
 const AllRoutes = () => (
     <Router>
@@ -21,11 +20,11 @@ const AllRoutes = () => (
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:id/view" element={<ProjectDetails />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/admin/login" element={<PublicRoute element={<AdminLoginPage/>}/>} />
             <Route path="/admin/dashboard" element={<ProtectedRoute element={<AdminDashboardPage />}/>} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Route>
         </Routes>
       </div>
