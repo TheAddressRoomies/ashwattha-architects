@@ -1,0 +1,87 @@
+.reviews-container {
+    margin-top: 250px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .reviews-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profiles {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .profile {
+    background-color: #444;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 20px;
+    width: calc(100% / 3 - 40px);
+    text-align: center;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .profile-name {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 7px;
+  }
+  
+  .profile-company {
+    font-size: small;
+    font-weight: bolder;
+    color: rgba(224, 224, 224, 0.633);
+    margin-bottom: 14px;
+  }
+  
+  .profile-pic {
+    margin-top: 15px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .stars {
+    font-size: 20px;
+    color: #f39c12;
+  }
+  
+  .arrow {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .arrow:focus {
+    outline: none;
+  }
+  
+  @media (max-width: 1200px) {
+    .profile {
+      width: calc(100% / 2 - 40px);
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .profile {
+      width: calc(100% - 40px);
+    }
+  }
+  
