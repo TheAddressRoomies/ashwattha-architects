@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { authApi } from "../api/AuthApi";
 import { sessionStorage } from "../storage/SessionStorage";
+import { SESSION_KEY } from '../keys/keys.js';
 
 export const useSession = () => {
-    const SESSION_KEY = "SESSION_KEY";
     const cache = sessionStorage.getItem(SESSION_KEY);
     const [data, setData] = useState(cache);
     const [loading, setLoading] = useState(false);
