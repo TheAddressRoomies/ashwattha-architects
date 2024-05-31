@@ -124,7 +124,7 @@ systemctl enable ashwattha-react-app
 systemctl start ashwattha-springboot-app
 systemctl enable ashwattha-springboot-app
 
-cd ..
+cd ../deployment
 echo "Copying mysql backup cronjob"
 cp -f backup_mysql.sh /etc/cron.d/backup_mysql.sh
 cp -f mysql_backup_cronjob /etc/cron.d/mysql_backup_cronjob
