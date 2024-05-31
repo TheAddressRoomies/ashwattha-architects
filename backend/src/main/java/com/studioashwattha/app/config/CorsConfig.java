@@ -18,7 +18,7 @@ import java.util.List;
 public class CorsConfig implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry corsRegistry){
-    corsRegistry.addMapping("/projects/**").allowedOrigins("*").allowedMethods("GET","POST","DELETE","PUT");
+    corsRegistry.addMapping("/**").allowedOrigins("*").allowedMethods("GET","POST","DELETE","PUT");
   }
 
   /**

@@ -81,7 +81,7 @@ const ContactUs = () => {
                   </FloatingLabel>
                 </Form.Group>
               </Row>
-              <Button sm variant="primary" type="submit" className="btn-sm ml-0 contact-us-submit-button">SUBMIT</Button>
+              <Button sm variant="primary" type="submit" className="contact-us-submit-button">SUBMIT</Button>
             </Form>
           </Col>
         </Row>
