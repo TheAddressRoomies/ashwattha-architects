@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import NavBar from './components/layout_components/NavBar';
 import Footer from './components/layout_components/Footer';
 import HomePage from './components/pages_components/Homepage.js';
@@ -17,6 +17,7 @@ const App = () => (
     <meta content="width=device-width, initial-scale=1" name="viewport" />
       <NavBar />
       <Routes>
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:id/view" element={<ProjectDetails />} />
