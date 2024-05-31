@@ -1,13 +1,12 @@
 import axios from "axios";
 import { sessionStorage } from "../storage/SessionStorage";
+import { CACHE_KEY } from '../keys/keys.js';
 
-class AuthApi {
-    static KEY_CACHE = 'cache';
-  
+class AuthApi {  
     context = {};
   
     constructor() {
-      const context = sessionStorage.getItem(AuthApi.KEY_CACHE);
+      const context = sessionStorage.getItem(CACHE_KEY);
       if (context) {
         this.context = context;
       }
@@ -23,9 +22,8 @@ class AuthApi {
             password: password
         })
         .then((response) => {
-            console.log(response);
             this.context.session = response.data.data.jwt;
-            sessionStorage.setItem(AuthApi.KEY_CACHE, this.context);
+            sessionStorage.setItem(CACHE_KEY, this.context);
             return this.context.session;
         });
     }

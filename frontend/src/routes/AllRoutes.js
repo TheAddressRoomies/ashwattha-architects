@@ -11,11 +11,10 @@ import NotFoundPage  from '../components/common_components/NotFoundPage.js';
 import AdminLoginPage from '../components/pages_components/AdminLogin.js';
 import AdminDashboardPage from '../components/pages_components/AdminDashboard.js';
 import Services from '../components/pages_components/Services.js';
-import './AllRoutes.css';
 
 const AllRoutes = () => (
     <Router>
-      <div className='app'>
+      <div>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Routes>
           <Route element={<MainLayout/>}>

@@ -62,7 +62,7 @@ const AdminLoginPage = () => {
           </Col>
           <>{error && <span className='mt-2 login-error'>{error}</span>}</>
           <Col className='mt-4'>
-            <Button sm variant="primary" type="submit" className="btn-sm ml-0 contact-us-submit-button" disabled={isLoading}>
+            <Button sm variant="primary" type="submit" className="contact-us-submit-button" disabled={isLoading}>
                {isLoading ? 'loading...' : 'Login'}
             </Button>
           </Col>
