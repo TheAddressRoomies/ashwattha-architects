@@ -6,6 +6,7 @@ import Services from './Services';
 import Expertise from './Expertise';
 import ContactUs from './ContactUs';
 import Reviews from './Reviews';
+import OurPartners from './OurPartners';
 
 const HomePage = () =>{
   return  (
@@ -15,6 +16,7 @@ const HomePage = () =>{
       <Expertise/>
       {/* <Services/> */}
       <Reviews/>
+      <OurPartners/>
       <ContactUs/>
     </div>
   );
