@@ -129,7 +129,6 @@ public class ProjectsServiceImpl implements ProjectsService {
                 e.printStackTrace();
             }
         });
-        projectRepository.deleteAll();
         projectRepository.deleteById(id);
     }
 }
