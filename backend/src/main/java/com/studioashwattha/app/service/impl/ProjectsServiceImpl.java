@@ -101,7 +101,24 @@ public class ProjectsServiceImpl implements ProjectsService {
 
     public void deleteProjectById(Long id){
         //this function will throw exception if project is not present in DB
-        findProjectById(id);
+        Project project = findProjectById(id);
+        //INFO: delete all images from file system for that project
+        List<ProjectImages> imgList = project.getImages();
+
+        imgList.forEach(i-> {
+            Path imagesPath = Paths.get(i.getImagePath());
+            try {
+                Files.delete(imagesPath);
+                logger.info("File "
+                        + imagesPath.toAbsolutePath().toString()
+                        + " successfully removed");
+            } catch (IOException e) {
+                logger.error("Unable to delete "
+                        + imagesPath.toAbsolutePath().toString()
+                        + " due to...");
+                e.printStackTrace();
+            }
+        });
 
         projectRepository.deleteById(id);
     }
