@@ -24,6 +24,7 @@ public class Project {
     private String category;
     private String team;
     private LocalDate completionDate;
+    private Integer rating;
     private String area;
     private String videoUrl;
 

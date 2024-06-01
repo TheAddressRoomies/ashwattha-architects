@@ -18,6 +18,7 @@ public class ProjectModel {
     private String team;
     private LocalDate completionDate;
     private String area;
+    private Integer rating;
     private String videoUrl;
 
 }
