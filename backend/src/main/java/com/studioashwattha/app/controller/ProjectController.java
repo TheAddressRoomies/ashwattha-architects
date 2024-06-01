@@ -78,7 +78,7 @@ public class ProjectController {
         zos.closeEntry();
     }
 
-    @PostMapping(value ="/add",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> createProject(@RequestPart("project") ProjectModel projectModel,
                                                                @RequestPart("images") List<MultipartFile> images) throws IOException {
         Project savedProject = projectService.saveProject(projectModel, images);

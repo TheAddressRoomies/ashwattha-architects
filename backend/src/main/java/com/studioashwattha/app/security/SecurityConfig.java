@@ -2,6 +2,7 @@ package com.studioashwattha.app.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +29,8 @@ public class SecurityConfig {
         http.csrf(csrf-> csrf.disable())
                 .authorizeRequests(authorize -> authorize
                         .requestMatchers("/admin/login").permitAll()
-                        .requestMatchers("/projects/add").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/projects").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/projects/{id}").authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
