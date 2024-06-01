@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +37,17 @@ public class ProjectsServiceImpl implements ProjectsService {
 
     public List<Project> findProjects(String category) {
         logger.info("Fetching projects by category");
+        List<Project> projects = null;
         if(category != null) {
-            return projectRepository.findAllByCategory(category);
+             projects = projectRepository.findAllByCategory(category);
+
+        }else {
+            projects = projectRepository.findAll();
         }
-        return projectRepository.findAll();
+
+        projects = projects.stream().sorted(Comparator.comparingInt(Project::getRating).reversed()).toList();
+
+        return projects;
     }
 
     public Project findProjectById(Long id) {
@@ -67,6 +75,7 @@ public class ProjectsServiceImpl implements ProjectsService {
                 .completionDate(projectModel.getCompletionDate())
                 .location(projectModel.getLocation())
                 .type(projectModel.getType())
+                .rating(projectModel.getRating())
                 .videoUrl(projectModel.getVideoUrl())
                 .build();
 
@@ -88,8 +97,9 @@ public class ProjectsServiceImpl implements ProjectsService {
     }
 
     private String saveImage(MultipartFile image) throws IOException {
-        Path source = Paths.get(System.getProperty("user.dir")+"/src/main/resources");
-        Path newFolder = Paths.get(source.toAbsolutePath() + "/static/");
+        Path source = Paths.get(System.getProperty("user.dir"));
+        File f = new File(source.toUri());
+        Path newFolder = Paths.get(f.getParent() + "/frontend/src/assets/");
         Files.createDirectories(newFolder);
 
         String imagePath = newFolder+"/"+ image.getOriginalFilename();
@@ -119,7 +129,6 @@ public class ProjectsServiceImpl implements ProjectsService {
                 e.printStackTrace();
             }
         });
-
         projectRepository.deleteById(id);
     }
 }

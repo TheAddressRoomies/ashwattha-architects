@@ -92,6 +92,7 @@ public class ProjectController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<BaseResponse> deleteProject(@PathVariable long id) {
+
         projectService.deleteProjectById(id);
         BaseResponse response = BaseResponse.of(
             ResponseCode.SUCCESS
