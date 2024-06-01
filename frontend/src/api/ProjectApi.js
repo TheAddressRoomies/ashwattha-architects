@@ -1,8 +1,9 @@
 import axios from "axios";
+import { BACKEND_BASE_URL } from '../keys/keys.js';
 
 class ProjectAPi{
     fetchProjects(category){
-        var url = "http://localhost:8080/projects";
+        var url = BACKEND_BASE_URL + "/projects";
         if(category !== undefined && category !== null) {
             url = `${url}?category=${category}`;
         }
@@ -13,7 +14,7 @@ class ProjectAPi{
     }
 
     deleteProject(projectId){
-        var url = `http://localhost:8080/projects/${projectId}`;
+        var url = BACKEND_BASE_URL + `/projects/${projectId}`;
         return axios.delete(url)
         .then((response) => {
             return response.data.data;
