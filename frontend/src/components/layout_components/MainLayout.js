@@ -3,6 +3,7 @@ import { Loading } from "../common_components/Loading.js";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import { useSession } from "../../hooks/UseSession.js";
+import FloatingCall from "../common_components/FloatingCall.js";
 
 export const MainLayout = ({ navigate }) => {
   const session = useSession();
@@ -17,6 +18,7 @@ export const MainLayout = ({ navigate }) => {
             ) : (
                 <Loading />
             )}
+        <FloatingCall/>
         <Footer />
     </>
   );
