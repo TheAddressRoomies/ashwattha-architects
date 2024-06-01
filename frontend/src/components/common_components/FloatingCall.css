@@ -1,0 +1,20 @@
+.floating-button{
+    position: fixed;
+    bottom: 50px;
+    right: 50px; 
+    z-index: 1;
+
+}
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100% - 1rem);
+  }
+
+@media (max-width: 800px){
+    .floating-button{
+        bottom: 25px;
+        right: 25px;
+    }
+}
