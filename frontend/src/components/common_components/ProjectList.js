@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProjectCard from './ProjectCad';
+import { BACKEND_BASE_URL } from '../keys/keys.js';
 
 import backgroundImage from '../../assets/background.avif';
 import backgroundImage2 from '../../assets/background2.jpg';
@@ -26,7 +27,7 @@ const ProjectList = () => {
 
   useEffect(() => {
     // Replace with your actual API URL
-    const apiURL = "http://localhost:8080/projects";
+    const apiURL = BACKEND_BASE_URL + "/projects";
 
     const fetchProjects = async () => {
       try {

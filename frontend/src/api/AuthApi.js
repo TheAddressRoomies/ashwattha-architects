@@ -1,6 +1,6 @@
 import axios from "axios";
 import { sessionStorage } from "../storage/SessionStorage";
-import { CACHE_KEY } from '../keys/keys.js';
+import { CACHE_KEY, BACKEND_BASE_URL } from '../keys/keys.js';
 
 class AuthApi {  
     context = {};
@@ -17,7 +17,7 @@ class AuthApi {
       }
   
     login(username,password) {
-        return axios.post("http://localhost:8080/admin/login", {
+        return axios.post(BACKEND_BASE_URL + "/login", {
             username: username,
             password: password
         })
