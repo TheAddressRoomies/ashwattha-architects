@@ -92,7 +92,7 @@ public class ProjectController {
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> updateProject(@RequestPart("project") ProjectModel projectModel,
-                                                      @RequestPart("images") List<MultipartFile> images) throws IOException {
+                                                      @RequestPart(value = "images",required = false) List<MultipartFile> images) throws IOException {
 
         System.out.println("PUT API called "+projectModel.toString());
         System.out.println(images);

@@ -137,18 +137,21 @@ public class ProjectsServiceImpl implements ProjectsService {
         Project project = findProjectById(projectModel.getId());
 
         List<ProjectImages> projectImagesList = new ArrayList<>();
-        for (MultipartFile image : images) {
-            if(image.getOriginalFilename().isBlank()){
-                continue;
+        if(images != null) {
+            for (MultipartFile image : images) {
+                if(image.getOriginalFilename().isBlank()){
+                    continue;
+                }
+                String imagePath = saveImage(image);
+                ProjectImages projectImage = new ProjectImages();
+                projectImage.setImagePath(imagePath);
+                projectImage.setImageName(image.getOriginalFilename());
+                projectImagesList.add(projectImage);
+                projectImage.setProject(project);
+                projectImageRepository.save(projectImage);
             }
-            String imagePath = saveImage(image);
-            ProjectImages projectImage = new ProjectImages();
-            projectImage.setImagePath(imagePath);
-            projectImage.setImageName(image.getOriginalFilename());
-            projectImagesList.add(projectImage);
-            projectImage.setProject(project);
-            projectImageRepository.save(projectImage);
         }
+
 
         for(ProjectImagesModel projectImagesModel: projectModel.getImages()){
             if(projectImagesModel.getIsDeleted()!= null && projectImagesModel.getIsDeleted()){
@@ -172,8 +175,10 @@ public class ProjectsServiceImpl implements ProjectsService {
 
         projectRepository.save(project);
 
-        projectImagesList.forEach(projectImages -> projectImages.setProject(null));
-        project.setImages(projectImagesList);
+        if(!projectImagesList.isEmpty()) {
+            projectImagesList.forEach(projectImages -> projectImages.setProject(null));
+            project.setImages(projectImagesList);
+        }
 
         return project;
     }
