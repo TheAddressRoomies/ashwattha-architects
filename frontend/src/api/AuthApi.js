@@ -17,7 +17,7 @@ class AuthApi {
       }
   
     login(username,password) {
-        return axios.post(BACKEND_BASE_URL + "/login", {
+        return axios.post(BACKEND_BASE_URL + "/admin/login", {
             username: username,
             password: password
         })

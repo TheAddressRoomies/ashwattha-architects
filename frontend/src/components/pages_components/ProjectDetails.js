@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Modal from 'react-modal';
 import ReactPlayer from 'react-player';
 import CarouselLayout from './CarouselLayout';
-import { BACKEND_BASE_URL } from '../keys/keys.js';
+import { BACKEND_BASE_URL } from '../../keys/keys.js';
 
 
 const ProjectDetails = () => {
