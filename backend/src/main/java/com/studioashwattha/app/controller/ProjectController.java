@@ -90,6 +90,21 @@ public class ProjectController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BaseResponse> updateProject(@RequestPart("project") ProjectModel projectModel,
+                                                      @RequestPart("images") List<MultipartFile> images) throws IOException {
+
+        System.out.println("PUT API called "+projectModel.toString());
+        System.out.println(images);
+        Project savedProject = projectService.updateProject(projectModel, images);
+        BaseResponse response = BaseResponse.of(
+                ResponseCode.SUCCESS,
+                savedProject,
+                null
+        );
+        return ResponseEntity.ok(response);
+    }
+
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<BaseResponse> deleteProject(@PathVariable long id) {
 

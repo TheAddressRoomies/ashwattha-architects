@@ -3,6 +3,7 @@ package com.studioashwattha.app.service.impl;
 import com.studioashwattha.app.entity.Project;
 import com.studioashwattha.app.entity.ProjectImages;
 import com.studioashwattha.app.exception.ProjectNotFoundException;
+import com.studioashwattha.app.model.ProjectImagesModel;
 import com.studioashwattha.app.model.ProjectModel;
 import com.studioashwattha.app.repository.ProjectImagesRepository;
 import com.studioashwattha.app.repository.ProjectRepository;
@@ -75,7 +76,7 @@ public class ProjectsServiceImpl implements ProjectsService {
                 .completionDate(projectModel.getCompletionDate())
                 .location(projectModel.getLocation())
                 .type(projectModel.getType())
-                .rating(projectModel.getRating())
+                .rating(Integer.parseInt(projectModel.getRating()))
                 .videoUrl(projectModel.getVideoUrl())
                 .build();
 
@@ -86,6 +87,7 @@ public class ProjectsServiceImpl implements ProjectsService {
             String imagePath = saveImage(image);
             ProjectImages projectImage = new ProjectImages();
             projectImage.setImagePath(imagePath);
+            projectImage.setImageName(image.getOriginalFilename());
             projectImagesList.add(projectImage);
             projectImage.setProject(savedProject);
             projectImageRepository.save(projectImage);
@@ -99,7 +101,7 @@ public class ProjectsServiceImpl implements ProjectsService {
     private String saveImage(MultipartFile image) throws IOException {
         Path source = Paths.get(System.getProperty("user.dir"));
         File f = new File(source.toUri());
-        Path newFolder = Paths.get(f.getParent() + "/frontend/src/assets/");
+        Path newFolder = Paths.get(f.getParent() + "/frontend/images/");
         Files.createDirectories(newFolder);
 
         String imagePath = newFolder+"/"+ image.getOriginalFilename();
@@ -116,19 +118,78 @@ public class ProjectsServiceImpl implements ProjectsService {
         List<ProjectImages> imgList = project.getImages();
 
         imgList.forEach(i-> {
-            Path imagesPath = Paths.get(i.getImagePath());
-            try {
-                Files.delete(imagesPath);
-                logger.info("File "
-                        + imagesPath.toAbsolutePath().toString()
-                        + " successfully removed");
-            } catch (IOException e) {
-                logger.error("Unable to delete "
-                        + imagesPath.toAbsolutePath().toString()
-                        + " due to...");
-                e.printStackTrace();
-            }
+            deleteImageFromPath(i.getImagePath());
         });
+        projectRepository.deleteAll();
         projectRepository.deleteById(id);
+    }
+
+    @Override
+    public Project updateProject(ProjectModel projectModel, List<MultipartFile> images) throws IOException {
+
+        //TODO:
+        // find project by id
+        // update the values of project from input projectModel
+        // post new images for project
+        // Iterate over images array from input and delete isDeleted images from db and file system
+
+
+        Project project = findProjectById(projectModel.getId());
+
+        List<ProjectImages> projectImagesList = new ArrayList<>();
+        for (MultipartFile image : images) {
+            if(image.getOriginalFilename().isBlank()){
+                continue;
+            }
+            String imagePath = saveImage(image);
+            ProjectImages projectImage = new ProjectImages();
+            projectImage.setImagePath(imagePath);
+            projectImage.setImageName(image.getOriginalFilename());
+            projectImagesList.add(projectImage);
+            projectImage.setProject(project);
+            projectImageRepository.save(projectImage);
+        }
+
+        for(ProjectImagesModel projectImagesModel: projectModel.getImages()){
+            if(projectImagesModel.getIsDeleted()!= null && projectImagesModel.getIsDeleted()){
+                deleteImageFromPath(projectImagesModel.getImagePath());
+                if(projectImageRepository.findById(projectImagesModel.getId()).isPresent()) {
+                    projectImageRepository.deleteById(projectImagesModel.getId());
+                }
+            }
+        }
+
+        project.setCompletionDate(projectModel.getCompletionDate());
+        project.setArea(projectModel.getArea());
+        project.setCategory(projectModel.getCategory());
+        project.setDescription(projectModel.getDescription());
+        project.setRating(Integer.parseInt(projectModel.getRating()));
+        project.setTeam(projectModel.getTeam());
+        project.setType(projectModel.getType());
+        project.setTitle(projectModel.getTitle());
+        project.setLocation(projectModel.getLocation());
+        project.setVideoUrl(projectModel.getVideoUrl());
+
+        projectRepository.save(project);
+
+        projectImagesList.forEach(projectImages -> projectImages.setProject(null));
+        project.setImages(projectImagesList);
+
+        return project;
+    }
+
+    private void deleteImageFromPath(String imagePath){
+        Path imagesPath = Paths.get(imagePath);
+        try {
+            Files.delete(imagesPath);
+            logger.info("File "
+                    + imagesPath.toAbsolutePath().toString()
+                    + " successfully removed");
+        } catch (IOException e) {
+            logger.error("Unable to delete "
+                    + imagesPath.toAbsolutePath().toString()
+                    + " due to...");
+            e.printStackTrace();
+        }
     }
 }
