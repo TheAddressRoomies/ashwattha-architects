@@ -1,8 +1,11 @@
-import './App.css';
-import AllRoutes from './routes/AllRoutes.js';
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import AllRoutes from "./routes/AllRoutes.js";
 
 const App = () => (
-  <AllRoutes/>
+  <BrowserRouter>
+    <AllRoutes />
+  </BrowserRouter>
 );
 
 export default App;
