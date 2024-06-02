@@ -18,6 +18,7 @@ public class ProjectImages {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String imagePath;
+    private String imageName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
