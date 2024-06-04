@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Reviews.css';  
 import billgates from "../../assets/bill.png";
-
+import vs from "../../assets/bill.png";
 const reviews = [
   {
     image: billgates,
@@ -11,7 +11,7 @@ const reviews = [
     stars: 4
   },
   {
-    image: billgates,
+    image: vs,
     name: "Linde Michel",
     company: "MARKETING @ APPLE INC.",
     text: "\"Web Summit will increase your appetite, your inspiration, your skills, your motivation and your network.\"",
@@ -25,7 +25,7 @@ const reviews = [
     stars: 4
   },
   {
-    image: billgates,
+    image: vs,
     name: "Alex Johnson",
     company: "DEVELOPER @ GOOGLE LLC",
     text: "\"An incredible experience that provides valuable networking opportunities and insights.\"",

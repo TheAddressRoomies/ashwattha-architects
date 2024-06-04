@@ -7,6 +7,7 @@ import com.studioashwattha.app.service.ProjectsService;
 import com.studioashwattha.app.util.BaseResponse;
 import com.studioashwattha.app.util.ResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,10 @@ public class ProjectController {
     private ProjectsService projectService;
 
     @GetMapping
-    public ResponseEntity<BaseResponse> findProjects(@RequestParam(value = "category",required = false) String category) {
-        List<Project> projects =  projectService.findProjects(category);
+    public ResponseEntity<BaseResponse> findProjects(@RequestParam(value = "category",required = false) String category,
+                                                     @RequestParam(defaultValue = "0") int page,
+                                                     @RequestParam(defaultValue = "16") int pageSize) {
+        Page<Project> projects =  projectService.findProjects(category, page, pageSize);
 
         BaseResponse response = BaseResponse.of(
                 ResponseCode.SUCCESS,
@@ -92,10 +95,8 @@ public class ProjectController {
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> updateProject(@RequestPart("project") ProjectModel projectModel,
-                                                      @RequestPart(value = "images",required = false) List<MultipartFile> images) throws IOException {
+                                                      @RequestPart(value = "images", required = false) List<MultipartFile> images) throws IOException {
 
-        System.out.println("PUT API called "+projectModel.toString());
-        System.out.println(images);
         Project savedProject = projectService.updateProject(projectModel, images);
         BaseResponse response = BaseResponse.of(
                 ResponseCode.SUCCESS,

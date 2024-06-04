@@ -37,7 +37,8 @@ const AdminDashboardPage = () => {
     projectApi
       .fetchProjects()
       .then((projects) => {
-        setProjects(projects);
+        const { content, totalPages } = projects.data.data;
+        setProjects(content);
       })
       .catch((error) => {});
   };

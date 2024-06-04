@@ -18,6 +18,7 @@ public class ProjectModel {
     private String location;
     private String category;
     private String description;
+    private String status;
     private String type;
     private String team;
     private LocalDate completionDate;

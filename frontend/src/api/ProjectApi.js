@@ -6,13 +6,20 @@ class ProjectAPi extends BaseApi {
     super();
   }
 
-  fetchProjects(category) {
+  fetchProjects(page, pageSize, category) {
     var url = this.getBaseUrl() + "/projects";
-    if (category !== undefined && category !== null) {
-      url = `${url}?category=${category}`;
-    }
-    return axios.get(url).then((response) => {
-      return response.data.data;
+    // if (category !== undefined && category !== null) {
+    //   url = `${url}?category=${category}`;
+    // }
+    // return axios.get(url).then((response) => {
+    //   return response.data.data;
+    // });
+    return axios.get(url, {
+      params: {
+        page: page,
+        pageSize: pageSize,
+        category: category
+      }
     });
   }
 
