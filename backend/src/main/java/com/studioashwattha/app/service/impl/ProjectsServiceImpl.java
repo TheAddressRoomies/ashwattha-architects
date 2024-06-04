@@ -103,8 +103,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 
     private String saveImage(MultipartFile image) throws IOException {
         Path source = Paths.get(System.getProperty("user.dir"));
-        File f = new File(source.toUri());
-        Path newFolder = Paths.get(f.getParent() + "/frontend/images/");
+        Path newFolder = Paths.get(source + "/src/main/resources/static/");
         Files.createDirectories(newFolder);
 
         String imagePath = newFolder+"/"+ image.getOriginalFilename();

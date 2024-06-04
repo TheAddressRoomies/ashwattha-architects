@@ -9,13 +9,14 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
 @Configuration
 @EnableWebMvc
-public class CorsConfig implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry corsRegistry){
     corsRegistry.addMapping("/**").allowedOrigins("*").allowedMethods("GET","POST","DELETE","PUT");
@@ -38,5 +39,12 @@ public class CorsConfig implements WebMvcConfigurer {
     converter.setObjectMapper(objectMapper);
     converters.add(converter);
     WebMvcConfigurer.super.extendMessageConverters(converters);
+  }
+
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    String path = System.getProperty("user.dir");
+    registry.addResourceHandler("/images/**")
+        .addResourceLocations("file:"+path+"/src/main/resources/static/");
   }
 }
