@@ -1,0 +1,19 @@
+.floating-button-top{
+    position: fixed;
+    bottom: 120px;
+    right: 50px; 
+    z-index: 1;
+
+}
+
+.top-button {
+    background: none;
+    border: 0px;
+}
+
+@media (max-width: 800px){
+    .floating-button-top{
+        bottom: 100px;
+        right: 25px;
+    }
+}

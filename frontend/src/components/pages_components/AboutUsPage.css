@@ -14,8 +14,7 @@ header {
 }
 
 p {
-    /* text-align: center; */
-    text-align: justify;
+    text-align: center;
 }
 
 .background-image {
@@ -110,6 +109,7 @@ p {
 
 .our-story p {
     flex: 1;
+    text-align: justify;
 }
 
 .awards-section {
@@ -162,6 +162,7 @@ justify-content: center;
     margin-bottom: 10px;
 }
 
-.team-member  p {
+/* .team-member  p {
     text-align: center;
-}
+    align-items: center;
+} */
