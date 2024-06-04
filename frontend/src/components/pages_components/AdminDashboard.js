@@ -76,7 +76,7 @@ const AdminDashboardPage = () => {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, index) => (
+            {projects?.map((project, index) => (
               <tr>
                 <td>{project.id}</td>
                 <td>{project.title}</td>

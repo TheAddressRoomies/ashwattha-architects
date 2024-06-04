@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import "./ImagePicker.css";
 import { MdDelete, MdFileUpload } from "react-icons/md";
+import { BACKEND_BASE_URL } from "../../keys/keys";
 
 const ImagePicker = ({
   initialImagesValue,
   onImagesChanged,
   onInitialImagesChanged,
 }) => {
-  const img1 = require.context("../../../images", true);
   const [images, setImages] = useState([]);
   const [initialImages, setInitialImages] = useState([]);
   const inputRef = useRef(null);
@@ -62,7 +62,7 @@ const ImagePicker = ({
           return (
             <div className="images-list-item">
               <img
-                src={img1("./" + image.imageName)}
+                src={BACKEND_BASE_URL + "/images/" + image.imageName}
                 className="images-list-item-image"
               />
               <MdDelete
