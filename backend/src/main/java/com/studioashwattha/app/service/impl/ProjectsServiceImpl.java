@@ -11,6 +11,9 @@ import com.studioashwattha.app.service.ProjectsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectsServiceImpl implements ProjectsService {
@@ -36,17 +40,15 @@ public class ProjectsServiceImpl implements ProjectsService {
     @Autowired
     private ProjectImagesRepository projectImageRepository;
 
-    public List<Project> findProjects(String category) {
+    public Page<Project> findProjects(String category, int page, int pageSize) {
         logger.info("Fetching projects by category");
-        List<Project> projects = null;
-        if(category != null) {
-             projects = projectRepository.findAllByCategory(category);
+        Page<Project> projects = null;
+        if(category != null && !category.isBlank()) {
+             projects = projectRepository.findAllByCategory(category, PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "rating")));
 
         }else {
-            projects = projectRepository.findAll();
+            projects = projectRepository.findAll(PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "rating")));
         }
-
-        projects = projects.stream().sorted(Comparator.comparingInt(Project::getRating).reversed()).toList();
 
         return projects;
     }
@@ -73,6 +75,7 @@ public class ProjectsServiceImpl implements ProjectsService {
                 .title(projectModel.getTitle())
                 .category(projectModel.getCategory())
                 .description(projectModel.getDescription())
+                .status(projectModel.getStatus())
                 .completionDate(projectModel.getCompletionDate())
                 .location(projectModel.getLocation())
                 .type(projectModel.getType())
@@ -120,19 +123,11 @@ public class ProjectsServiceImpl implements ProjectsService {
         imgList.forEach(i-> {
             deleteImageFromPath(i.getImagePath());
         });
-        projectRepository.deleteAll();
         projectRepository.deleteById(id);
     }
 
     @Override
     public Project updateProject(ProjectModel projectModel, List<MultipartFile> images) throws IOException {
-
-        //TODO:
-        // find project by id
-        // update the values of project from input projectModel
-        // post new images for project
-        // Iterate over images array from input and delete isDeleted images from db and file system
-
 
         Project project = findProjectById(projectModel.getId());
 
@@ -168,6 +163,7 @@ public class ProjectsServiceImpl implements ProjectsService {
         project.setDescription(projectModel.getDescription());
         project.setRating(Integer.parseInt(projectModel.getRating()));
         project.setTeam(projectModel.getTeam());
+        project.setStatus(projectModel.getStatus());
         project.setType(projectModel.getType());
         project.setTitle(projectModel.getTitle());
         project.setLocation(projectModel.getLocation());

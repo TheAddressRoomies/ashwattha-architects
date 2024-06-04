@@ -20,6 +20,7 @@ public class Project {
     private String title;
     private String location;
     private String description;
+    private String status;
     private String type;
     private String category;
     private String team;
