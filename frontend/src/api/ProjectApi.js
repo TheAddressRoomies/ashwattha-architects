@@ -6,7 +6,7 @@ class ProjectAPi extends BaseApi {
     super();
   }
 
-  fetchProjects(page, pageSize, category) {
+  async fetchProjects(page, pageSize, category) {
     var url = this.getBaseUrl() + "/projects";
     // if (category !== undefined && category !== null) {
     //   url = `${url}?category=${category}`;
@@ -21,6 +21,17 @@ class ProjectAPi extends BaseApi {
         category: category
       }
     });
+  }
+
+  async fetchProjectById(id) {
+    var url = this.getBaseUrl() + `/projects/${id}`;
+    // if (category !== undefined && category !== null) {
+    //   url = `${url}?category=${category}`;
+    // }
+    // return axios.get(url).then((response) => {
+    //   return response.data.data;
+    // });
+    return axios.get(url);
   }
 
   async deleteProject(projectId) {

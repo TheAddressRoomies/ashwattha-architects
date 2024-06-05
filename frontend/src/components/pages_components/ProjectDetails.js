@@ -6,50 +6,61 @@ import backgroundImage3 from '../../assets/background3.png';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import { FaLocationArrow, FaBuilding, FaRulerCombined, FaUsers, FaCalendarAlt } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import ReactPlayer from 'react-player';
-import CarouselLayout from './CarouselLayout';
-import { BACKEND_BASE_URL } from '../../keys/keys.js';
+import { projectApi } from "../../api/ProjectApi";
+import { BACKEND_BASE_URL } from '../../keys/keys';
+import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
 
+
+const data = {
+  title: 'Rajwada House',
+  location: 'Narayangaon, Pune',
+  description: 'The Brij is envisioned as an immersive environment that will facilitate collaborations between artists and visitors. The museum seeks to create discursive opportunities, promote the exchange of ideas, and inspire practitioners and visitors to access and engage with the arts on a more personal level.',
+  type: 'Residential',
+  team: 'CP Kukreja Architects (India), Crab Studio (United Kingdom)',
+  completionDate: '2024-01-17',
+  area: '9,180 sq.ft',
+  videoUrl: 'https://www.youtube.com/watch?v=E7JVgaR6XMI&t=49s',
+  images: [
+    backgroundImage,
+    backgroundImage2,
+    backgroundImage3,
+    backgroundImage,
+    backgroundImage2,
+    backgroundImage3,
+    backgroundImage3,
+  ]
+}
 
 const ProjectDetails = () => {
+  const { id } = useParams();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const [projectData, setProjectData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
-    // Fetch project data from API
-    const fetchProjectData = async () => {
-      try {
-        // const response = await fetch(BACKEND_BASE_URL + '/projects/1');
-        // const data = await response.json();
-        const data = {
-          title: 'Rajwada House',
-          location: 'Narayangaon, Pune',
-          description: 'The Brij is envisioned as an immersive environment that will facilitate collaborations between artists and visitors. The museum seeks to create discursive opportunities, promote the exchange of ideas, and inspire practitioners and visitors to access and engage with the arts on a more personal level.',
-          type: 'Residential',
-          team: 'CP Kukreja Architects (India), Crab Studio (United Kingdom)',
-          completionDate: '2024-01-17',
-          area: '9,180 sq.ft',
-          videoUrl: 'https://www.youtube.com/watch?v=E7JVgaR6XMI&t=49s',
-          images: [
-            backgroundImage,
-            backgroundImage2,
-            backgroundImage3,
-            backgroundImage,
-            backgroundImage2,
-            backgroundImage3,
-            backgroundImage3,
-          ]
-        }
-        setProjectData(data);
-      } catch (error) {
-        console.error('Error fetching project data:', error);
-      }
-    };
-
-    fetchProjectData();
+    fetchProjects();
   }, []);
+
+  const fetchProjects = () => {
+    setIsLoading(true);
+  projectApi.fetchProjectById(id)
+    .then((response) => {
+      console.log(response.data)
+      const c = response.data.data;
+      setProjectData(c);
+      setIsLoading(false);
+    }).catch((error)=>{
+      setProjectData(data);
+      setIsOffline(true);
+      console.error(error);
+      setIsLoading(false);
+    });
+  }
 
   const openModal = (index) => {
     setCurrentImage(index);
@@ -88,7 +99,6 @@ const ProjectDetails = () => {
           {projectData.description}
         </p>
       </section>
-
       <section className="project-facts">
         <h2>Project Facts</h2>
         <Row>
@@ -96,57 +106,67 @@ const ProjectDetails = () => {
             <div className="fact-card">
               <FaLocationArrow />
               <strong>Location</strong>
-              <p>{projectData.location}</p>
+              <p className='reviews-p'>{projectData.location}</p>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4}>
             <div className="fact-card">
               <FaBuilding />
               <strong>Type</strong>
-              <p>{projectData.type}</p>
+              <p className='reviews-p'>{projectData.type}</p>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4}>
             <div className="fact-card">
               <FaRulerCombined />
               <strong>Built Up Area</strong>
-              <p>{projectData.area}</p>
+              <p className='reviews-p'>{projectData.area}</p>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4}>
             <div className="fact-card">
               <FaUsers />
               <strong>Design Team</strong>
-              <p>{projectData.team}</p>
+              <p className='reviews-p'>{projectData.team}</p>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4}>
             <div className="fact-card">
               <FaCalendarAlt />
               <strong>Completion Date</strong>
-              <p>{projectData.completionDate}</p>
+              <p className='reviews-p'>{projectData.completionDate}</p>
             </div>
           </Col>
         </Row>
       </section>
 
-      <section className="gallery-section">
-        <h2>Gallery</h2>
+      
+        <h2 className='gallery-header'>Gallery</h2>
+      <div className="gallery-section">
         <Row>
           {projectData.images.map((image, index) => (
             <Col xs={12} sm={6} md={4} key={index}>
               <div className="gallery-image-container">
-                <Image
-                  src={image}
+                {isOffline ? 
+                  <Image
+                  src={backgroundImage3}
                   alt={`Gallery Image ${index + 1}`}
                   className="gallery-image"
                   onClick={() => openModal(index)}
-                />
+                  />
+                :
+                  <Image
+                    src={BACKEND_BASE_URL + "/images/" + image.imageName}
+                    alt={`Gallery Image ${index + 1}`}
+                    className="gallery-image"
+                    onClick={() => openModal(index)}
+                  />
+                }
               </div>
             </Col>
           ))}
         </Row>
-      </section>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -155,10 +175,11 @@ const ProjectDetails = () => {
         overlayClassName="modal-overlay"
       >
         <div className="modal-inner-content">
-          <Image src={projectData.images[currentImage]} alt={`Modal Image ${currentImage + 1}`} className="modal-image" />
+          {isOffline ? <Image src={backgroundImage3} alt={`Modal Image ${currentImage + 1}`} className="modal-image" />: 
+          <Image src={BACKEND_BASE_URL + "/images/" + projectData.images[currentImage].imageName} alt={`Modal Image ${currentImage + 1}`} className="modal-image" />}
           <div className="modal-navigation">
-            <button onClick={prevImage}>&lt;</button>
-            <button onClick={nextImage}>&gt;</button>
+            <button onClick={prevImage}><IoIosArrowDropleft className="gallery-leftright-icons" color='white'/></button>
+            <button onClick={nextImage}><IoIosArrowDropright className="gallery-leftright-icons"  color='white'/></button>
           </div>
         </div>
       </Modal>
