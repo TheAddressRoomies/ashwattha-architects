@@ -5,6 +5,7 @@ import { projectApi } from "../../api/ProjectApi";
 import backgroundImage from '../../assets/background.avif';
 import backgroundImage2 from '../../assets/background2.jpg';
 import backgroundImage3 from '../../assets/background3.png';
+import { BACKEND_BASE_URL } from '../../keys/keys';
 
 const projectsDummy = [
   { id: 1, images: [{ imagePath: backgroundImage}], title: 'Project 1', description: 'Description 1', category: "Interior",},
@@ -28,6 +29,7 @@ const ProjectsPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isLoading, setIsLoading] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
     fetchProjects();
@@ -43,9 +45,12 @@ const ProjectsPage = () => {
       setTotalPages(totalPages);
       setIsLoading(false);
     }).catch((error)=>{
+      setIsOffline(true)
+      setProjects(projectsDummy);
       console.error(error);
       setIsLoading(false);
     });
+
   }
 
   const handleCategoryChange = (category) => {
@@ -76,8 +81,8 @@ const ProjectsPage = () => {
         ))}
       </div>
     <div className="cards">
-      {projects.map(project => (
-        <ProjectCard key={project.id} id={project.id} image={img1("./" + project.images[0].imageName)} title={project.title} description={project.description} />
+      {projects?.map(project => (
+        <ProjectCard key={project.id} id={project.id} image={BACKEND_BASE_URL + "/images/" + project.images[0].imageName} title={project.title} description={project.description} isOffline={isOffline}/>
       ))}
     </div>
     <div className="pagination">

@@ -70,7 +70,7 @@ function Reviews() {
   return (
     <div className="reviews-container">
       <h1>What People think about us</h1>
-      <p>That's the main thing people are controlled by! Thoughts - their perception of themselves!</p>
+      <p className='reviews-p'>That's the main thing people are controlled by! Thoughts - their perception of themselves!</p>
       <div className="reviews-carousel">
         <button className="arrow" onClick={handlePrev} disabled={currentIndex === 0}>&lt;</button>
         <div className="profiles">

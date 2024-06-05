@@ -39,7 +39,7 @@ p {
     text-align: center;
     background-size: cover;
     background-position: center;
-    height: 45vh;
+    height: 35vh;
     color: white;
     animation: fadeIn 1.5s ease-in-out;
 }
@@ -81,7 +81,7 @@ p {
 }
 
 .project-facts {
-    margin: 20px 0;
+    margin: 40px 20px;
 }
 
 .project-facts h2 {
@@ -95,16 +95,12 @@ p {
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 150px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1s ease-in-out;
     margin-bottom: 20px;
 }
 
-.fact-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
 .fact-card svg {
     color: #007bff;
@@ -127,9 +123,11 @@ p {
 
 .gallery-section {
     margin-top: 20px;
+    border: 1px solid #5f5e5e73 ;
+    padding: 20px;
 }
 
-.gallery-section h2 {
+.gallery-header {
     text-align: center;
     margin-bottom: 20px;
     font-family: 'Roboto', sans-serif;
@@ -138,12 +136,14 @@ p {
 .gallery-image-container {
     margin-top: 20px;
     overflow: hidden;
-    border-radius: 10px;
+    height: 300px;
+    object-fit:contain;
+    background-color: #007bff;
 }
 
 .gallery-image {
     width: 100%;
-    height: auto;
+    height: 100%;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -220,6 +220,16 @@ p {
 .modal-navigation button:focus {
     outline: none;
 }
+
+.gallery-leftright-icons{
+    font-size: 80px;
+}
+
+@media only screen and (max-width: 400px) {
+    .gallery-leftright-icons {
+      font-size: 20px;
+    }
+  }
 
 .walkthrough-section {
     margin-top: 40px;

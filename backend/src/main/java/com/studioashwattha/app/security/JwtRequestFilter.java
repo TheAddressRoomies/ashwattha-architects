@@ -52,8 +52,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 response.getWriter().write("Invalid JWT Token");
                 return;
             }
-        } else {
-            logger.warn("JWT Token does not begin with Bearer String");
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
