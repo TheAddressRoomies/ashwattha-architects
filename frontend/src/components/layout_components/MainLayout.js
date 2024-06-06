@@ -20,7 +20,6 @@ export const MainLayout = ({ navigate }) => {
                 <Loading />
             )}
         <FloatingCall/>
-        <GoTop/>
         <Footer />
     </>
   );

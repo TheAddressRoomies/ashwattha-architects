@@ -7,6 +7,7 @@ import Expertise from './Expertise';
 import ContactUs from './ContactUs';
 import Reviews from './Reviews';
 import OurPartners from './OurPartners';
+import GoTop from '../common_components/GoTop';
 
 const HomePage = () =>{
   return  (
@@ -18,7 +19,9 @@ const HomePage = () =>{
       <Reviews/>
       <OurPartners/>
       <ContactUs/>
+      <GoTop/>
     </div>
+    
   );
 };
 
