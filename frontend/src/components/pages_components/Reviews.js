@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Reviews.css';  
 import billgates from "../../assets/bill.png";
 import vs from "../../assets/bill.png";
+import { IoIosArrowDropleft, IoIosArrowDropright } from "react-icons/io";
+
 const reviews = [
   {
     image: billgates,
@@ -72,7 +74,7 @@ function Reviews() {
       <h1>What People think about us</h1>
       <p className='reviews-p'>That's the main thing people are controlled by! Thoughts - their perception of themselves!</p>
       <div className="reviews-carousel">
-        <button className="arrow" onClick={handlePrev} disabled={currentIndex === 0}>&lt;</button>
+        <button className="arrow" onClick={handlePrev} disabled={currentIndex === 0}><IoIosArrowDropleft className="review-leftright-icons" color='white'/></button>
         <div className="profiles">
           {reviews.slice(currentIndex, currentIndex + visibleCards).map((review, index) => (
             <div key={index} className="profile">
@@ -84,7 +86,7 @@ function Reviews() {
             </div>
           ))}
         </div>
-        <button className="arrow" onClick={handleNext} disabled={currentIndex >= reviews.length - visibleCards}>&gt;</button>
+        <button className="arrow" onClick={handleNext} disabled={currentIndex >= reviews.length - visibleCards}><IoIosArrowDropright className="review-leftright-icons"  color='white'/></button>
       </div>
     </div>
   );
