@@ -78,6 +78,42 @@ const ServicesPage = () => {
             </div>
           </div>
         </div>
+
+        <div key="4" className="service">
+          <div className="service-images hide-if-desktop ">
+            <img src={interior} alt="background" />
+          </div>
+          <div className="service-text service-text-left">
+            <h2 className="service-header">Valuation</h2>
+            <div className="service-text-box">
+              <p>
+                We provide high quality renovation and rebuild service and
+                dramatically increase the value of your property, in both
+                Artistic and Honesty.
+              </p>
+            </div>
+          </div>
+          <div className="service-images hide-if-mobile service-text-right">
+            <img src={interior} alt="background" />
+          </div>
+        </div>
+
+        <div key="5" className="service">
+          <div className="service-images">
+            <img src={engineeringImage} alt="engineering" />
+          </div>
+          <div className="service-text service-text-right">
+            <h2 className="service-header">Liecencing</h2>
+            <div className="service-text-box">
+              <p>
+                We provide high quality renovation and rebuild service and
+                dramatically increase the value of your property, in both
+                Artistic and Honesty.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
