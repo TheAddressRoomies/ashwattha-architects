@@ -37,6 +37,7 @@ const Footer = () => (
                 className="footer-icons-container"
                 href="https://www.facebook.com/profile.php?id=100067924069593&mibextid=LQQJ4d"
                 role="button"
+                target="_blank"
               >
                 <FaFacebookF className="footer-icons" />
               </a>
@@ -46,6 +47,7 @@ const Footer = () => (
                 className="footer-icons-container"
                 href="https://www.instagram.com/ashwatthaarchitects?igsh=MXY4NnF1eGl2YWY2MQ%3D%3D&utm_source=qr"
                 role="button"
+                target="_blank"
               >
                 <FaInstagram className="footer-icons" />
               </a>
@@ -55,6 +57,7 @@ const Footer = () => (
                 className="footer-icons-container"
                 href="mailto:ashwatthaarchitects@gmail.com"
                 role="button"
+                target="_blank"
               >
                 <FaRegEnvelope className="footer-icons" />
               </a>
@@ -64,6 +67,7 @@ const Footer = () => (
                 className="footer-icons-container"
                 href="https://in.pinterest.com/"
                 role="button"
+                target="_blank"
               >
                 <FaPinterest className="footer-icons" />
               </a>
