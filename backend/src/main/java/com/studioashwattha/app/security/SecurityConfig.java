@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/projects").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/projects/{id}").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/dashboard/carousel").authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
