@@ -8,6 +8,7 @@ import com.studioashwattha.app.model.ProjectModel;
 import com.studioashwattha.app.repository.ProjectImagesRepository;
 import com.studioashwattha.app.repository.ProjectRepository;
 import com.studioashwattha.app.service.ProjectsService;
+import com.studioashwattha.app.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
-public class ProjectsServiceImpl implements ProjectsService {
+public class ProjectsServiceImpl extends ImageUtil implements ProjectsService  {
 
     private static final Logger logger = LoggerFactory.getLogger(ProjectsServiceImpl.class);
 
@@ -87,10 +83,10 @@ public class ProjectsServiceImpl implements ProjectsService {
 
         List<ProjectImages> projectImagesList = new ArrayList<>();
         for (MultipartFile image : images) {
-            String imagePath = saveImage(image);
+            File savedImage = saveImage(image);
             ProjectImages projectImage = new ProjectImages();
-            projectImage.setImagePath(imagePath);
-            projectImage.setImageName(image.getOriginalFilename());
+            projectImage.setImagePath(savedImage.getAbsolutePath());
+            projectImage.setImageName(savedImage.getName());
             projectImagesList.add(projectImage);
             projectImage.setProject(savedProject);
             projectImageRepository.save(projectImage);
@@ -99,18 +95,6 @@ public class ProjectsServiceImpl implements ProjectsService {
         savedProject.setImages(projectImagesList);
 
         return savedProject;
-    }
-
-    private String saveImage(MultipartFile image) throws IOException {
-        Path source = Paths.get(System.getProperty("user.dir"));
-        Path newFolder = Paths.get(source + "/src/main/resources/static/");
-        Files.createDirectories(newFolder);
-
-        String imagePath = newFolder+"/"+ image.getOriginalFilename();
-        File file = new File(imagePath);
-        image.transferTo(file);
-        logger.info("Saved image to: {}", imagePath);
-        return imagePath;
     }
 
     public void deleteProjectById(Long id){
@@ -136,10 +120,10 @@ public class ProjectsServiceImpl implements ProjectsService {
                 if(image.getOriginalFilename().isBlank()){
                     continue;
                 }
-                String imagePath = saveImage(image);
+                File savedImage = saveImage(image);
                 ProjectImages projectImage = new ProjectImages();
-                projectImage.setImagePath(imagePath);
-                projectImage.setImageName(image.getOriginalFilename());
+                projectImage.setImagePath(savedImage.getAbsolutePath());
+                projectImage.setImageName(savedImage.getName());
                 projectImagesList.add(projectImage);
                 projectImage.setProject(project);
                 projectImageRepository.save(projectImage);
@@ -176,20 +160,5 @@ public class ProjectsServiceImpl implements ProjectsService {
         }
 
         return project;
-    }
-
-    private void deleteImageFromPath(String imagePath){
-        Path imagesPath = Paths.get(imagePath);
-        try {
-            Files.delete(imagesPath);
-            logger.info("File "
-                    + imagesPath.toAbsolutePath().toString()
-                    + " successfully removed");
-        } catch (IOException e) {
-            logger.error("Unable to delete "
-                    + imagesPath.toAbsolutePath().toString()
-                    + " due to...");
-            e.printStackTrace();
-        }
     }
 }
