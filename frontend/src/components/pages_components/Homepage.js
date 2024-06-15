@@ -19,7 +19,6 @@ const HomePage = () =>{
       <Reviews/>
       <OurPartners/>
       <ContactUs/>
-      <GoTop/>
     </div>
     
   );
