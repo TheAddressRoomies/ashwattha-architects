@@ -10,4 +10,5 @@ public class DashboardImagesModel {
   private String imageType;
   private String imageName;
   private String imagePath;
+  private String isChanged;
 }
