@@ -11,6 +11,7 @@ import AdminDashboardPage from "../components/pages_components/AdminDashboard.js
 import ServicesPage from "../components/pages_components/services_page/ServicesPage.js";
 import AddProjectForm from "../components/common_components/project_forms/AddProjectForm.js";
 import EditProjectForm from "../components/common_components/project_forms/EditProjectForm.js";
+import EditHomepage from "../components/common_components/admin_homepage/EditHomepage.js";
 
 const AllRoutes = () => {
   const location = useLocation();
@@ -31,6 +32,10 @@ const AllRoutes = () => {
           <Route
             path="/admin/dashboard"
             element={<ProtectedRoute element={<AdminDashboardPage />} />}
+          />
+          <Route
+            path="/admin/edit-homepage"
+            element={<ProtectedRoute element={<EditHomepage />} />}
           />
           <Route
             path="/admin/add-project-form"

@@ -24,6 +24,11 @@ const AdminDashboardPage = () => {
     navigate("/admin/login");
   };
 
+  const handleEditHomepage = (e) => {
+    e.preventDefault();
+    navigate("/admin/edit-homepage");
+  };
+
   const handleAddProject = (e) => {
     e.preventDefault();
     navigate("/admin/add-project-form");
@@ -46,23 +51,18 @@ const AdminDashboardPage = () => {
   return (
     <Container className="admin-dashboard-page">
       <div className="admin-dashboard-layout">
-        <Row className="d-flex justify-content-between">
-          <Col sm={10}>
-            <h1>Admin Dashboard</h1>
-          </Col>
-          <Col sm={2}>
-            <Row>
-              <Col sm={8} className="mt-2">
-                <Button onClick={handleAddProject}>Add Project</Button>
-              </Col>
-              <Col sm={1} className="mt-2">
-                <Button disabled={isLoading} onClick={onLogout}>
-                  {isLoading ? "loading..." : "Logout"}
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+      <Row className="d-flex justify-content-between align-items-center">
+        <Col sm={10}>
+          <h1>Admin Dashboard</h1>
+        </Col>
+        <Col sm={2} className="d-flex justify-content-end">
+          <Button className="me-2" onClick={handleEditHomepage}>Edit Homepage</Button>
+          <Button className="me-2" onClick={handleAddProject}>Add Project</Button>
+          <Button disabled={isLoading} onClick={onLogout}>
+            {isLoading ? "loading..." : "Logout"}
+          </Button>
+        </Col>
+      </Row>
 
         <Table responsive>
           <thead>
