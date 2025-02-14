@@ -10,6 +10,16 @@ class DashboardApi extends BaseApi {
     var url = this.getBaseUrl() + "/dashboard/carousel";
     return axios.get(url);
   }
+
+  async updateCarouselImages(formData) {
+    var url = this.getBaseUrl() + "/dashboard/carousel";
+    var request = axios.putForm(url, formData, this.getHeaders());
+    return this.send(request).then((response)=>{
+      return response.data.data;
+    })
+  }
+
+  
 }
 
 export const dashboardApi = new DashboardApi();
